@@ -1,0 +1,19 @@
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><c:out value="${pageTitle}"/> | Nest</title>
+    <link rel="stylesheet" href="<c:url value='/css/style.css'/>">
+</head>
+<body>
+<header class="site-header">
+    <a class="brand" href="<c:url value='/listings'/>">nest<span>.</span></a>
+    <nav aria-label="Main navigation">
+        <a href="<c:url value='/listings'/>">Properties</a>
+        <a href="<c:url value='/viewings'/>">Viewings</a>
+    </nav>
+    <span class="demo-tag">Local classroom demo</span>
+</header>
+<main class="container">

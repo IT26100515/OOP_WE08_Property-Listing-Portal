@@ -1,0 +1,8 @@
+/target/
+/data/
+/demo-data/
+/acceptance-data/
+/.idea/
+*.iml
+.DS_Store
+.env
