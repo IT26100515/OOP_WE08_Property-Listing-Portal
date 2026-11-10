@@ -1,3 +1,4 @@
+
 package lk.estate.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -11,6 +12,7 @@ import java.math.BigDecimal;
         @JsonSubTypes.Type(value = RentalListing.class, name = "RENT")
 })
 public abstract class Listing implements Identified {
+
     private final String id;
     private final String title;
     private final String city;
@@ -20,6 +22,7 @@ public abstract class Listing implements Identified {
 
     protected Listing(String id, String title, String city, String address,
                       BigDecimal price, String description) {
+
         this.id = Rules.text(id, "Listing ID", 80);
         this.title = Rules.text(title, "Title", 120);
         this.city = Rules.text(city, "City", 80);

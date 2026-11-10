@@ -1,3 +1,4 @@
+
 package lk.estate.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -12,6 +13,7 @@ import lk.estate.service.AppException;
         @JsonSubTypes.Type(value = VirtualViewing.class, name = "VIRTUAL")
 })
 public abstract class Viewing implements Identified {
+
     private final String id;
     private final String listingId;
     private final String customerName;
@@ -19,19 +21,26 @@ public abstract class Viewing implements Identified {
     private final LocalDateTime scheduledAt;
     private final ViewingStatus status;
 
-    protected Viewing(String id, String listingId, String customerName, String email,
-                      LocalDateTime scheduledAt, ViewingStatus status) {
+    protected Viewing(String id, String listingId, String customerName,
+                      String email, LocalDateTime scheduledAt,
+                      ViewingStatus status) {
+
         this.id = Rules.text(id, "Viewing ID", 80);
         this.listingId = Rules.text(listingId, "Listing ID", 80);
         this.customerName = Rules.text(customerName, "Customer name", 100);
         this.email = Rules.email(email);
+
         if (scheduledAt == null || scheduledAt.getSecond() != 0
-                || scheduledAt.getNano() != 0 || scheduledAt.getMinute() % 30 != 0) {
-            throw new AppException(400, "Choose a 30-minute slot at :00 or :30.");
+                || scheduledAt.getNano() != 0
+                || scheduledAt.getMinute() % 30 != 0) {
+            throw new AppException(400,
+                    "Choose a 30-minute slot at :00 or :30.");
         }
+
         if (status == null) {
             throw new AppException(400, "Viewing status is required.");
         }
+
         this.scheduledAt = scheduledAt;
         this.status = status;
     }

@@ -1,7 +1,11 @@
+
 package lk.estate.service;
 
-/** A user-correctable failure, with an HTTP status for the web layer. */
+/**
+ * A user-correctable failure, with an HTTP status for the web layer.
+ */
 public class AppException extends RuntimeException {
+
     private final int status;
 
     public AppException(int status, String message) {
@@ -9,5 +13,7 @@ public class AppException extends RuntimeException {
         this.status = status;
     }
 
-    public int getStatus() { return status; }
+    public int getStatus() {
+        return status;
+    }
 }
